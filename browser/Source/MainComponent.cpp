@@ -2,12 +2,13 @@
 
 MainComponent::MainComponent()
     : webView(),
-      webPage (&webView)
+      webPage()
 {
+    webView.setPage(&webPage);
     addAndMakeVisible (webView);
 
     MessageManager::callAsync([this]() {
-        webPage.loadFromURL (String ("file:///index.html"));
+        webPage.loadFromURL (String ("file:///C:/xxx/index.html"));
     });
 
     setSize (600, 400);
