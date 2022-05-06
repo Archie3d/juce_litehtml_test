@@ -13,5 +13,8 @@ public:
 
 private:
 
+    juce_litehtml::WebView webView;
+    juce_litehtml::WebPage webPage;
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

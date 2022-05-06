@@ -1,7 +1,15 @@
 #include "MainComponent.h"
 
 MainComponent::MainComponent()
+    : webView(),
+      webPage (&webView)
 {
+    addAndMakeVisible (webView);
+
+    MessageManager::callAsync([this]() {
+        webPage.loadFromURL (String ("file:///index.html"));
+    });
+
     setSize (600, 400);
 }
 
@@ -16,4 +24,6 @@ void MainComponent::paint (juce::Graphics& g)
 
 void MainComponent::resized()
 {
+    const auto bounds { getLocalBounds() };
+    webView.setBounds (bounds);
 }
