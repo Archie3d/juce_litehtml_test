@@ -8,7 +8,7 @@ MainComponent::MainComponent()
     addAndMakeVisible (webView);
 
     MessageManager::callAsync([this]() {
-        webPage.loadFromURL (String ("file:///C:/xxx/index.html"));
+        webPage.loadFromURL (String ("https://en.wikipedia.org/wiki/Main_Page"));
     });
 
     setSize (600, 400);
