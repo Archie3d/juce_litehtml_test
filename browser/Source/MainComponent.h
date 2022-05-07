@@ -6,7 +6,8 @@
 
 class MainComponent : public juce::Component,
                       public juce_litehtml::WebPage::Client,
-                      private Button::Listener
+                      private Button::Listener,
+                      private TextEditor::Listener
 {
 public:
     MainComponent();
@@ -24,6 +25,9 @@ private:
 
     // juce::Button::Listener
     void buttonClicked (Button* button) override;
+
+    // juce::TextEditor::Listener
+    void textEditorReturnKeyPressed (TextEditor&) override;
 
     juce_litehtml::WebView webView;
     juce_litehtml::WebPage webPage;

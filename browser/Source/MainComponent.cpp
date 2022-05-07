@@ -8,6 +8,7 @@ MainComponent::MainComponent()
 {
     backButton.addListener (this);
     forwardButton.addListener (this);
+    urlTextEditor.addListener (this);
 
     webView.setPage(&webPage);
     addAndMakeVisible (webView);
@@ -69,7 +70,14 @@ void MainComponent::updateButtonsState()
 void MainComponent::buttonClicked (Button* button)
 {
     if (button == &backButton)
-        webPage.followLink (webHistory.goBack());
+        webPage.loadFromURL (webHistory.goBack());
     else if (button == &forwardButton)
-        webPage.followLink (webHistory.goForward());
+        webPage.loadFromURL (webHistory.goForward());
+
+    updateButtonsState();
+}
+
+void MainComponent::textEditorReturnKeyPressed (TextEditor&)
+{
+    webPage.followLink (URL (urlTextEditor.getText()));
 }

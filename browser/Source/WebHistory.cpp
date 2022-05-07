@@ -6,7 +6,10 @@ WebHistory::WebHistory()
 
 bool WebHistory::canGoBack() const
 {
-    return ! urls.empty() && currentIndex > 0;
+    if (urls.empty())
+        return false;
+
+    return currentIndex > 0;
 }
 
 bool WebHistory::canGoForward() const
@@ -43,24 +46,6 @@ void WebHistory::setURL (const URL& url)
         urls.push_back (url);
         currentIndex = 0;
         return;
-    }
-
-    if (canGoForward())
-    {
-        if (urls.at (currentIndex + 1) == url)
-        {
-            ++currentIndex;
-            return;
-        }
-    }
-
-    if (canGoBack())
-    {
-        if (urls.at (currentIndex - 1) == url)
-        {
-            --currentIndex;
-            return;
-        }
     }
 
     truncate();
