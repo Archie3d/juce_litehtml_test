@@ -8,6 +8,7 @@ MainComponent::MainComponent()
     addAndMakeVisible (webView);
 
     MessageManager::callAsync([this]() {
+        webPage.getLoader().purgeCache();
         webPage.loadFromURL (String ("https://en.wikipedia.org/wiki/Main_Page"));
     });
 
