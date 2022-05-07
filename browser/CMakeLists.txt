@@ -12,7 +12,6 @@ target_link_libraries(${TARGET}
         juce::juce_data_structures
         juce::juce_gui_basics
 
-        juce::juce_quickjs
         juce::juce_litehtml
 
         juce::juce_recommended_config_flags
