@@ -22,6 +22,8 @@ juce_generate_juce_header(${TARGET})
 
 set(src
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/Main.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Source/WebHistory.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/Source/WebHistory.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/MainComponent.h
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/MainComponent.cpp
 )
