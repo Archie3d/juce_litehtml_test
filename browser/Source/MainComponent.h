@@ -23,6 +23,8 @@ private:
 
     void updateButtonsState();
 
+    void updateURLTextEditor();
+
     // juce::Button::Listener
     void buttonClicked (Button* button) override;
 

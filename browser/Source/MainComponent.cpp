@@ -67,6 +67,11 @@ void MainComponent::updateButtonsState()
     forwardButton.setEnabled (webHistory.canGoForward());
 }
 
+void MainComponent::updateURLTextEditor()
+{
+    urlTextEditor.setText (webPage.getURL().toString (true), false);
+}
+
 void MainComponent::buttonClicked (Button* button)
 {
     if (button == &backButton)
@@ -75,6 +80,7 @@ void MainComponent::buttonClicked (Button* button)
         webPage.loadFromURL (webHistory.goForward());
 
     updateButtonsState();
+    updateURLTextEditor();
 }
 
 void MainComponent::textEditorReturnKeyPressed (TextEditor&)
