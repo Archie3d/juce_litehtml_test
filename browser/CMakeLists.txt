@@ -8,7 +8,6 @@ juce_add_gui_app(${TARGET}
 target_link_libraries(${TARGET}
     PRIVATE
         juce::juce_core
-        juce::juce_core
         juce::juce_data_structures
         juce::juce_gui_basics
 
