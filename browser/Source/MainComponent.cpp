@@ -4,16 +4,19 @@ MainComponent::MainComponent()
     : webView(),
       webPage(),
       backButton ("<"),
-      forwardButton (">")
+      forwardButton (">"),
+      reloadButton ("O")
 {
     backButton.addListener (this);
     forwardButton.addListener (this);
+    reloadButton.addListener (this);
     urlTextEditor.addListener (this);
 
     webView.setPage(&webPage);
     addAndMakeVisible (webView);
     addAndMakeVisible (backButton);
     addAndMakeVisible (forwardButton);
+    addAndMakeVisible (reloadButton);
     addAndMakeVisible (urlTextEditor);
 
     webPage.setClient (this);
@@ -46,6 +49,8 @@ void MainComponent::resized()
     forwardButton.setBounds (navigationBarBounds.removeFromLeft (24));
     navigationBarBounds.removeFromLeft (24);
     navigationBarBounds.removeFromRight (28);
+    reloadButton.setBounds(navigationBarBounds.removeFromRight (24));
+    navigationBarBounds.removeFromRight (4);
     urlTextEditor.setBounds (navigationBarBounds);
 
     webView.setBounds (bounds);
@@ -78,6 +83,12 @@ void MainComponent::buttonClicked (Button* button)
         webPage.loadFromURL (webHistory.goBack());
     else if (button == &forwardButton)
         webPage.loadFromURL (webHistory.goForward());
+    else if (button == &reloadButton)
+    {
+        // Force reload purging the load cache
+        webPage.getLoader().purgeCache();
+        webPage.reload();
+    }
 
     updateButtonsState();
     updateURLTextEditor();
