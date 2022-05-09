@@ -1,5 +1,7 @@
 #include "MainComponent.h"
 
+static const URL homePageURL("https://en.wikipedia.org/wiki/Main_Page");
+
 MainComponent::MainComponent()
     : webView(),
       webPage(),
@@ -23,7 +25,7 @@ MainComponent::MainComponent()
 
     MessageManager::callAsync([this]() {
         webPage.getLoader().purgeCache();
-        webPage.followLink (URL ("https://en.wikipedia.org/wiki/Main_Page"));
+        webPage.followLink (homePageURL);
     });
 
     setSize (800, 600);
